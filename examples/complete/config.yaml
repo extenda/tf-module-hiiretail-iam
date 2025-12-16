@@ -1,0 +1,78 @@
+custom_roles:
+  cashiers:
+    title: "Cashiers"
+    description: "Role for cashier staff members with POS and basic inventory access"
+    stage: "GA"
+    permissions:
+      - id: "pos.transactions.create"
+      - id: "pos.transactions.read"
+      - id: "pos.payments.process"
+      - id: "inventory.products.read"
+      - id: "reports.sales.read"
+  
+  storemanagers:
+    title: "StoreManagers"
+    description: "Role for store managers with full store operations access"
+    stage: "GA"
+    permissions:
+      - id: "pos.transactions.create"
+      - id: "pos.transactions.read"
+      - id: "pos.transactions.void"
+      - id: "pos.payments.process"
+      - id: "pos.payments.refund"
+      - id: "pos.reports.read"
+      - id: "inventory.products.read"
+      - id: "inventory.products.update"
+      - id: "inventory.stocklevels.read"
+      - id: "inventory.stocklevels.adjust"
+      - id: "staff.management.read"
+      - id: "staff.management.update"
+      - id: "reports.sales.read"
+      - id: "reports.inventory.read"
+      - id: "reports.staff.read"
+
+business_units:
+  "001":
+    name: "Store 001 - Downtown Main Street"
+    id: "BU-001"
+    props:
+      location: "downtown"
+      region: "north"
+      type: "flagship"
+      address: "123 Main Street"
+  
+  "002":
+    name: "Store 002 - Uptown Shopping Center"
+    id: "BU-002"
+    props:
+      location: "uptown"
+      region: "north"
+      type: "standard"
+      address: "456 Shopping Plaza"
+  
+  "003":
+    name: "Store 003 - Westside Mall"
+    id: "BU-003"
+    props:
+      location: "westside"
+      region: "west"
+      type: "mall"
+      address: "789 Mall Drive"
+  
+  "004":
+    name: "Store 004 - Eastside Village"
+    id: "BU-004"
+    props:
+      location: "eastside"
+      region: "east"
+      type: "neighborhood"
+      address: "321 Village Lane"
+  
+  "005":
+    name: "Store 005 - Southside Outlet"
+    id: "BU-005"
+    props:
+      location: "southside"
+      region: "south"
+      type: "outlet"
+      address: "654 Outlet Road"

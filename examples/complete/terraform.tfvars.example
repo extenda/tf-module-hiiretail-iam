@@ -1,0 +1,10 @@
+# This is an example terraform.tfvars file
+# Copy this file to terraform.tfvars and adjust as needed
+
+# Note: Authentication credentials should be set via environment variables:
+# export HIIRETAIL_CLIENT_ID="your-oauth2-client-id"
+# export HIIRETAIL_CLIENT_SECRET="your-oauth2-client-secret"
+# export HIIRETAIL_TENANT_ID="your-tenant-id"
+
+# All configuration is handled through the config.yaml file
+# No additional variables are needed for this example
