@@ -93,15 +93,15 @@ business_units = {
 }
 
 groups = {
-  "store006-cashiers" = {
-    description = "Cashiers for store 006"
+  "store006-financialusers" = {
+    description = "Financial Users for store 006"
   }
 }
 
 role_bindings = [
   {
-    group_id  = "store006-cashiers"
-    role_id   = "custom.cashiers"
+    group_id  = "store006-financialusers"
+    role_id   = "custom.financialusers"
     is_custom = true
     bindings  = ["BU-006"]
   }

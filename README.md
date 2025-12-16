@@ -6,7 +6,7 @@ A Terraform module for managing HiiRetail IAM resources including custom roles, 
 
 - **Custom Role Management**: Create and manage custom IAM roles with specific permissions
 - **Business Unit Resources**: Define business units as IAM resources for granular access control
-- **Automatic Group Generation**: Automatically generates groups based on business units and custom roles (e.g., `Cashiers-001`, `StoreManagers-001`)
+- **Automatic Group Generation**: Automatically generates groups based on business units and custom roles (e.g., `Financial Users-001`, `Financial Managers-001`)
 - **Role Binding Automation**: Automatically creates role bindings that connect custom roles to groups at specific business unit resources
 - **YAML-Driven Configuration**: Easy to manage with YAML configuration files for bulk operations
 - **Flexible Configuration**: Supports both automatic generation and manual configuration modes
@@ -28,44 +28,38 @@ module "hiiretail_iam" {
   source = "./tf-module-hii-iam"
 
   custom_roles = {
-    cashiers = {
-      title       = "Cashiers"
-      description = "Role for cashier staff members"
+    financialusers = {
+      title       = "Financial Users"
+      description = "Role for financial users with standard financial operations access"
       stage       = "GA"
       permissions = [
         {
-          id = "pos.transactions.create"
+          id = "hss.reconciliation.get"
         },
         {
-          id = "pos.transactions.read"
+          id = "hss.reconciliation.list"
         },
         {
-          id = "inventory.products.read"
+          id = "rec.counts.count"
         }
       ]
     }
-    storemanagers = {
-      title       = "StoreManagers"
-      description = "Role for store manager staff members"
+    financialmanagers = {
+      title       = "Financial Managers"
+      description = "Role for financial managers with full financial operations access"
       stage       = "GA"
       permissions = [
         {
-          id = "pos.transactions.create"
+          id = "hss.reconciliation.get"
         },
         {
-          id = "pos.transactions.read"
+          id = "hss.reconciliation.list"
         },
         {
-          id = "pos.reports.read"
+          id = "cmm.audits.get"
         },
         {
-          id = "inventory.products.read"
-        },
-        {
-          id = "inventory.products.update"
-        },
-        {
-          id = "staff.management.read"
+          id = "cmm.repositories.get"
         }
       ]
     }
@@ -97,9 +91,9 @@ module "hiiretail_iam" {
 ```
 
 This configuration will automatically create:
-- 2 custom roles: `Cashiers` and `StoreManagers`
+- 2 custom roles: `Financial Users` and `Financial Managers`
 - 2 business unit resources: `BU-001` and `BU-002`
-- 4 groups: `Cashiers-BU-001`, `StoreManagers-BU-001`, `Cashiers-BU-002`, `StoreManagers-BU-002`
+- 4 groups: `Financial Users-BU-001`, `Financial Managers-BU-001`, `Financial Users-BU-002`, `Financial Managers-BU-002`
 - 4 role bindings connecting each role to each group at their respective business units
 
 ### YAML-Driven Configuration
@@ -208,9 +202,9 @@ type = list(object({
 
 When `auto_generate_groups = true`, the module creates a cartesian product of all custom roles and business units. For example:
 
-- Custom Roles: `Cashiers`, `StoreManagers`
+- Custom Roles: `Financial Users`, `Financial Managers`
 - Business Units: `001`, `002`, `003`
-- Generated Groups: `Cashiers-001`, `Cashiers-002`, `Cashiers-003`, `StoreManagers-001`, `StoreManagers-002`, `StoreManagers-003`
+- Generated Groups: `Financial Users-001`, `Financial Users-002`, `Financial Users-003`, `Financial Managers-001`, `Financial Managers-002`, `Financial Managers-003`
 
 ### Automatic Role Binding
 

@@ -55,10 +55,10 @@ Manage hundreds of resources easily:
 
 ```yaml
 custom_roles:
-  cashiers:
-    title: "Cashiers"
+  financialusers:
+    title: "Financial Users"
     permissions:
-      - id: "pos.transactions.create"
+      - id: "hss.reconciliation.get"
 
 business_units:
   "001":
@@ -88,9 +88,9 @@ Custom Roles (Define Permissions)
 
 ### Example Flow
 
-1. **Create Custom Role**: `Cashiers` with POS permissions
+1. **Create Custom Role**: `Financial Users` with financial permissions
 2. **Create Business Units**: `BU-001`, `BU-002` (stores)
-3. **Auto-Generate Groups**: `Cashiers-BU-001`, `Cashiers-BU-002`
+3. **Auto-Generate Groups**: `Financial Users-BU-001`, `Financial Users-BU-002`
 4. **Auto-Create Bindings**: Role → Group @ Resource
 5. **Add Users**: Assign users to appropriate groups
 
@@ -221,7 +221,7 @@ make plan-manual
 
 ### Scenario 1: New Retail Chain
 
-**Setup:** 10 stores, 2 roles (Cashiers, Managers)
+**Setup:** 10 stores, 2 roles (Financial Users, Financial Managers)
 
 **Configuration:**
 - 2 custom roles defined once

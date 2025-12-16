@@ -5,7 +5,7 @@ This example demonstrates a complete implementation using YAML configuration fil
 ## Overview
 
 This example creates:
-- 2 custom roles (Cashiers and StoreManagers) with different permission sets
+- 2 custom roles (Financial Users and Financial Managers) with different permission sets
 - 5 business units (stores)
 - 10 auto-generated groups (2 roles × 5 stores)
 - 10 auto-generated role bindings

@@ -44,8 +44,8 @@ This document provides visual representations of how the HiiRetail IAM module wo
 ┌──────────────────────┐
 │   Custom Roles       │
 │                      │
-│  • Cashiers          │
-│  • StoreManagers     │
+│  • Financial Users   │
+│  • Financial Managers│
 └──────────┬───────────┘
            │
            │ defines permissions
@@ -62,8 +62,8 @@ This document provides visual representations of how the HiiRetail IAM module wo
 ┌──────────────────────┐
 │      Groups          │
 │                      │
-│  • Cashiers-BU-001   │
-│  • Cashiers-BU-002   │
+│  • Financial Users-BU-001   │
+│  • Financial Users-BU-002   │
 └──────────┬───────────┘
            │
            │ scoped to
@@ -81,12 +81,12 @@ This document provides visual representations of how the HiiRetail IAM module wo
 
 ### Input
 ```
-Custom Roles:        Business Units:
-┌────────────┐      ┌────────────┐
-│ Cashiers   │      │   BU-001   │
-└────────────┘      └────────────┘
-┌────────────┐      ┌────────────┐
-│ Managers   │      │   BU-002   │
+Custom Roles:              Business Units:
+┌──────────────────┐      ┌────────────┐
+│ Financial Users  │      │   BU-001   │
+└──────────────────┘      └────────────┘
+┌──────────────────┐      ┌────────────┐
+│Financial Managers│      │   BU-002   │
 └────────────┘      └────────────┘
                     ┌────────────┐
                     │   BU-003   │
@@ -105,24 +105,24 @@ For each (Role, BU) pair:
 
 ### Output
 ```
-Generated Groups:           Role Bindings:
-┌─────────────────┐        ┌──────────────────────────────┐
-│ Cashiers-BU-001 │◄───────┤ Cashiers → Group @ BU-001    │
-└─────────────────┘        └──────────────────────────────┘
-┌─────────────────┐        ┌──────────────────────────────┐
-│ Cashiers-BU-002 │◄───────┤ Cashiers → Group @ BU-002    │
-└─────────────────┘        └──────────────────────────────┘
-┌─────────────────┐        ┌──────────────────────────────┐
-│ Cashiers-BU-003 │◄───────┤ Cashiers → Group @ BU-003    │
-└─────────────────┘        └──────────────────────────────┘
-┌─────────────────┐        ┌──────────────────────────────┐
-│ Managers-BU-001 │◄───────┤ Managers → Group @ BU-001    │
-└─────────────────┘        └──────────────────────────────┘
-┌─────────────────┐        ┌──────────────────────────────┐
-│ Managers-BU-002 │◄───────┤ Managers → Group @ BU-002    │
-└─────────────────┘        └──────────────────────────────┘
-┌─────────────────┐        ┌──────────────────────────────┐
-│ Managers-BU-003 │◄───────┤ Managers → Group @ BU-003    │
+Generated Groups:                  Role Bindings:
+┌──────────────────────┐        ┌────────────────────────────────────┐
+│ Financial Users-BU-001│◄───────┤ Financial Users → Group @ BU-001   │
+└──────────────────────┘        └────────────────────────────────────┘
+┌──────────────────────┐        ┌────────────────────────────────────┐
+│ Financial Users-BU-002│◄───────┤ Financial Users → Group @ BU-002   │
+└──────────────────────┘        └────────────────────────────────────┘
+┌──────────────────────┐        ┌────────────────────────────────────┐
+│ Financial Users-BU-003│◄───────┤ Financial Users → Group @ BU-003   │
+└──────────────────────┘        └────────────────────────────────────┘
+┌──────────────────────┐        ┌────────────────────────────────────┐
+│Financial Managers-BU-001│◄─────┤ Financial Managers → Group @ BU-001│
+└──────────────────────┘        └────────────────────────────────────┘
+┌──────────────────────┐        ┌────────────────────────────────────┐
+│Financial Managers-BU-002│◄─────┤ Financial Managers → Group @ BU-002│
+└──────────────────────┘        └────────────────────────────────────┘
+┌──────────────────────┐        ┌────────────────────────────────────┐
+│Financial Managers-BU-003│◄─────┤ Financial Managers → Group @ BU-003│
 └─────────────────┘        └──────────────────────────────┘
 ```
 
@@ -148,13 +148,13 @@ User
 Example:
 ────────
 User: john@example.com
-  └─► Member of: Cashiers-BU-001
-        └─► Binding: Cashiers role at BU-001
-              └─► Role: Cashiers
+  └─► Member of: Financial Users-BU-001
+        └─► Binding: Financial Users role at BU-001
+              └─► Role: Financial Users
                     └─► Permissions:
-                          • pos.transactions.create
-                          • pos.transactions.read
-                          • inventory.products.read
+                          • hss.reconciliation.get
+                          • hss.reconciliation.list
+                          • rec.counts.count
                     └─► Scoped to: BU-001 (Store 001)
 ```
 

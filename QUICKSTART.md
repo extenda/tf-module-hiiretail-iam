@@ -81,24 +81,24 @@ The module automatically creates:
 
 ```
 Custom Roles (2):
-├── Cashiers (custom.cashiers)
-└── StoreManagers (custom.storemanagers)
+├── Financial Users (custom.financialusers)
+└── Financial Managers (custom.financialmanagers)
 
 Business Units (2):
 ├── BU-001 (Store 001)
 └── BU-002 (Store 002)
 
 Auto-Generated Groups (4):
-├── Cashiers-BU-001
-├── Cashiers-BU-002
-├── StoreManagers-BU-001
-└── StoreManagers-BU-002
+├── Financial Users-BU-001
+├── Financial Users-BU-002
+├── Financial Managers-BU-001
+└── Financial Managers-BU-002
 
 Role Bindings (4):
-├── Cashiers → Cashiers-BU-001 @ BU-001
-├── Cashiers → Cashiers-BU-002 @ BU-002
-├── StoreManagers → StoreManagers-BU-001 @ BU-001
-└── StoreManagers → StoreManagers-BU-002 @ BU-002
+├── Financial Users → Financial Users-BU-001 @ BU-001
+├── Financial Users → Financial Users-BU-002 @ BU-002
+├── Financial Managers → Financial Managers-BU-001 @ BU-001
+└── Financial Managers → Financial Managers-BU-002 @ BU-002
 ```
 
 ## Common Tasks
